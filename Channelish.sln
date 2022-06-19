@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{329A6D05-7D23-486E-91BC-E39C7238EFEC}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Channelish.Server", "src\Channelish.Server\Channelish.Server.fsproj", "{6B7B791E-1011-4468-8ED2-46E53F58FF18}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B7B791E-1011-4468-8ED2-46E53F58FF18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B7B791E-1011-4468-8ED2-46E53F58FF18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B7B791E-1011-4468-8ED2-46E53F58FF18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B7B791E-1011-4468-8ED2-46E53F58FF18}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6B7B791E-1011-4468-8ED2-46E53F58FF18} = {329A6D05-7D23-486E-91BC-E39C7238EFEC}
+	EndGlobalSection
+EndGlobal

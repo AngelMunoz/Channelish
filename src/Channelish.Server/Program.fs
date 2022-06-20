@@ -32,20 +32,60 @@ let appRouter =
 
 let generalChannel =
     channel {
-        join (fun ctx si ->
+        join (fun ctx ci ->
             task {
                 ctx
-                    .GetLogger()
-                    .LogInformation("Connected! Socket Id: " + si.SocketId.ToString())
+                    .GetLogger("General:Join")
+                    .LogInformation("Connected! Socket Id: " + ci.SocketId.ToString())
+
+                let hub = ctx.GetService<ISocketHub>()
+
+                do!
+                    hub.SendMessageToClients
+                        "/general"
+                        "status-change"
+                        {| Event = "Connected"
+                           Client = ci.SocketId |}
 
                 return Ok
             })
 
-        handle "status-change" (fun ctx si (msg: Message<{| message: string |}>) ->
+        handle "status-change" (fun ctx ci (msg: Message<{| message: string |}>) ->
             task {
-                let logger = ctx.GetLogger()
-                printfn "%A" msg.Payload
-                logger.LogInformation("got message {message} from client with Socket Id: {socketId}", msg, si.SocketId)
+                let logger = ctx.GetLogger("General:StatusChange")
+                let hub = ctx.GetService<ISocketHub>()
+                logger.LogInformation("got message {message} from client with Socket Id: {socketId}", msg, ci.SocketId)
+                do! hub.SendMessageToClients "/general" "status-change" {| Got = { msg with Ref = $"{ci.SocketId}" } |}
+                return ()
+            })
+
+        terminate (fun ctx ci ->
+            task {
+                let logger = ctx.GetLogger("General:Terminate")
+                let hub = ctx.GetService<ISocketHub>()
+                logger.LogInformation($"{ci.SocketId} - Terminated")
+
+                do!
+                    hub.SendMessageToClients
+                        "/general"
+                        "status-change"
+                        {| Event = "Left"
+                           Client = ci.SocketId |}
+
+                return ()
+            })
+
+        error_handler (fun ctx ci msg err ->
+            task {
+                let logger = ctx.GetLogger("General:ErrorHandler")
+                logger.LogError("{SocketId} Error: {error}", ci.SocketId, err)
+                return ()
+            })
+
+        not_found_handler (fun ctx ci msg ->
+            task {
+                let logger = ctx.GetLogger("General:NotFound")
+                logger.LogInformation($"[{ci.SocketId} - Not Found] %A{msg}")
                 return ()
             })
     }
@@ -55,6 +95,8 @@ let app =
         use_router appRouter
         add_channel "/general" generalChannel
         use_gzip
+        url "http://0.0.0.0:5000"
+        url "https://0.0.0.0:5001"
 #if DEBUG
         use_cors "debug" (fun o ->
             o

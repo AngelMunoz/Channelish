@@ -2,7 +2,16 @@
   "imports": {
     "lit": "https://cdn.skypack.dev/pin/lit@v2.2.3-IwwYkJyh70OoYX9M4m5k/mode=imports,min/optimized/lit.js",
     "lit/": "https://cdn.skypack.dev/pin/lit@v2.2.3-IwwYkJyh70OoYX9M4m5k/mode=imports,min/optimized/lit/",
-    "lit/directives/": "https://cdn.skypack.dev/pin/lit@v2.2.3-IwwYkJyh70OoYX9M4m5k/mode=imports,min/optimized/lit/directives/"
+    "lit/directives/": "https://cdn.skypack.dev/pin/lit@v2.2.3-IwwYkJyh70OoYX9M4m5k/mode=imports,min/optimized/lit/directives/",
+    "rxjs": "https://ga.jspm.io/npm:rxjs@7.5.5/dist/esm5/index.js",
+    "rxjs/ajax": "https://ga.jspm.io/npm:rxjs@7.5.5/dist/esm5/ajax/index.js",
+    "rxjs/fetch": "https://ga.jspm.io/npm:rxjs@7.5.5/dist/esm5/fetch/index.js",
+    "rxjs/operators": "https://ga.jspm.io/npm:rxjs@7.5.5/dist/esm5/operators/index.js",
+    "rxjs/webSocket": "https://ga.jspm.io/npm:rxjs@7.5.5/dist/esm5/webSocket/index.js"
   },
-  "scopes": {}
+  "scopes": {
+    "https://ga.jspm.io/": {
+      "tslib": "https://ga.jspm.io/npm:tslib@2.4.0/tslib.es6.js"
+    }
+  }
 }

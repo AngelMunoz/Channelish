@@ -1,1 +1,1 @@
-type Todo = { title: string; done: boolean; }
+type Page = "Home" | "About" | "Chat";

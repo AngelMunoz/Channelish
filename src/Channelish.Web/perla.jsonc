@@ -2,10 +2,10 @@
   "$schema": "https://raw.githubusercontent.com/AngelMunoz/Perla/v0.21.0/perla.schema.json",
   "index": "./index.html",
   "devServer": {
-    "liveReload": true,
     "mountDirectories": {
       "./src": "/src"
-    }
+    },
+    "liveReload": true
   },
   "build": {
     "copyPaths": {
@@ -15,6 +15,7 @@
     }
   },
   "packages": {
-    "lit": "https://ga.jspm.io/npm:lit@2.2.3/index.js"
+    "lit": "https://ga.jspm.io/npm:lit@2.2.3/index.js",
+    "rxjs": "https://ga.jspm.io/npm:rxjs@7.5.5/dist/esm5/index.js"
   }
 }

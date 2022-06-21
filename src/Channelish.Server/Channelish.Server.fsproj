@@ -1,14 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
+    <Compile Include="Helpers.fs" />
+    <Compile Include="Types.fs" />
+    <Compile Include="Channels.fs" />
+    <Compile Include="Handlers.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
-  
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="FSharp.SystemTextJson" Version="0.19.13" />
+    <PackageReference Include="FsToolkit.ErrorHandling" Version="2.13.0" />
+    <PackageReference Include="FsToolkit.ErrorHandling.TaskResult" Version="2.13.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.19.0" />
+    <PackageReference Include="Mondocks" Version="0.4.8" />
+    <PackageReference Include="MongoDB.Driver" Version="2.16.0" />
     <PackageReference Include="Saturn" Version="0.*" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.19.0" />
   </ItemGroup>
 </Project>
